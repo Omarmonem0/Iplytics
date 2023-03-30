@@ -1,5 +1,5 @@
 
-import Knex from "knex";
+import Knex, { knex } from "knex";
 import express from 'express';
 import { knexConfig } from "./knexfile"
 import { router } from "./routes";
@@ -26,6 +26,7 @@ async function start() {
 async function connectToDatabase() {
     const knex = Knex(knexConfig["development"])
     await knex.raw("SELECT 1")
+    await knex.migrate.latest({ directory: "src/migrations"})
 }
 
 start()
