@@ -13,10 +13,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 app.use(router)
 
+const port = process.env.PORT || 8000;
 async function start() {
     try {
-        const port = process.env.PORT || 8000;
-        await Database.getConnection()
+        await Database.connect()
         app.listen(port, () => console.log(`🚀 Server ready at http://localhost:${port}`))
     } catch (e) {
         console.log(e)

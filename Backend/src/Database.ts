@@ -8,18 +8,17 @@ export class Database {
 
     }
 
-    public static async getConnection() {
-        if (!Database.connection) {
-            await Database.connect()
-        }
+    public static getConnection() {
+        console.log("getting connection")
         return Database.connection
     }
 
-    private static async connect() {
+    public static async connect() {
         try {
             const knex = Knex(knexConfig["development"])
             await knex.raw("SELECT 1")
             await knex.migrate.latest({ directory: "src/migrations" })
+            console.log("setting connection")
             Database.connection = knex
         } catch (e) {
             console.log("Can't connect to DB")

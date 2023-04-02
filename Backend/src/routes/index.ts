@@ -1,7 +1,10 @@
 import express, { Request, Response } from 'express';
-import { createPatentMiddleware } from './../middlewares/CreatePatent';
+import { createPatentMiddleware } from '../middlewares/createPatent';
+import { PatentController } from '../controllers/patentsController';
 
 export const router = express.Router();
+
+const patentController = new PatentController()
 
 // health check endpoint.
 router.get("/health" , function (req: Request, res: Response) {
@@ -9,4 +12,4 @@ router.get("/health" , function (req: Request, res: Response) {
 })
 
 // patents endpoints
-router.post("/patents", createPatentMiddleware)
+router.post("/patents", createPatentMiddleware, patentController.create.bind(patentController))

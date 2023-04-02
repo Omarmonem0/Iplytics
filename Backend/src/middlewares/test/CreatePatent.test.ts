@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { createPatentMiddleware } from "../CreatePatent";
+import { createPatentMiddleware } from "../createPatent";
 
 
 describe("Test Create Patent Middleware", () => {
