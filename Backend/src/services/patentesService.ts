@@ -7,9 +7,9 @@ export class PatentService {
         this.repository = new PatentRespoistory()
     }
 
-    async create(patent: IPatent) {
+    async create(patent: IPatent): Promise<Number> {
         try {
-            await this.repository.create(patent)
+            return await this.repository.create(patent)
         } catch (e) {
             throw e
         }

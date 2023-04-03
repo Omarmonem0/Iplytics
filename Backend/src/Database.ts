@@ -9,7 +9,6 @@ export class Database {
     }
 
     public static getConnection() {
-        console.log("getting connection")
         return Database.connection
     }
 
@@ -18,7 +17,6 @@ export class Database {
             const knex = Knex(knexConfig["development"])
             await knex.raw("SELECT 1")
             await knex.migrate.latest({ directory: "src/migrations" })
-            console.log("setting connection")
             Database.connection = knex
         } catch (e) {
             console.log("Can't connect to DB")

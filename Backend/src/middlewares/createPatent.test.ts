@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { createPatentMiddleware } from "../createPatent";
+import { createPatentMiddleware } from "./createPatent";
+import { STATUS_CODES } from "../constants";
 
 
 describe("Test Create Patent Middleware", () => {
@@ -23,7 +24,7 @@ describe("Test Create Patent Middleware", () => {
             mockResponse as Response,
             nextFunction
         );
-        expect(mockResponse.statusCode).toBe(400)
+        expect(mockResponse.statusCode).toBe(STATUS_CODES.badRequest)
         expect(mockResponse.json).toBeCalledWith(expectedResponse)
     })
 
@@ -39,7 +40,7 @@ describe("Test Create Patent Middleware", () => {
             mockResponse as Response,
             nextFunction
         );
-        expect(mockResponse.statusCode).toBe(400)
+        expect(mockResponse.statusCode).toBe(STATUS_CODES.badRequest)
         expect(mockResponse.json).toBeCalledWith(expectedResponse)
     })
 
@@ -55,7 +56,7 @@ describe("Test Create Patent Middleware", () => {
             mockResponse as Response,
             nextFunction
         );
-        expect(mockResponse.statusCode).toBe(400)
+        expect(mockResponse.statusCode).toBe(STATUS_CODES.badRequest)
         expect(mockResponse.json).toBeCalledWith(expectedResponse)
     })
 
@@ -72,7 +73,7 @@ describe("Test Create Patent Middleware", () => {
             mockResponse as Response,
             nextFunction
         );
-        expect(mockResponse.statusCode).toBe(400)
+        expect(mockResponse.statusCode).toBe(STATUS_CODES.badRequest)
         expect(mockResponse.json).toBeCalledWith(expectedResponse)
     })
 
@@ -89,7 +90,7 @@ describe("Test Create Patent Middleware", () => {
             mockResponse as Response,
             nextFunction
         );
-        expect(mockResponse.statusCode).toBe(400)
+        expect(mockResponse.statusCode).toBe(STATUS_CODES.badRequest)
         expect(mockResponse.json).toBeCalledWith(expectedResponse)
     })
 

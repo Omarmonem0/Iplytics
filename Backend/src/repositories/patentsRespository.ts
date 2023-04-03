@@ -3,11 +3,10 @@ import { IPatent } from "../models/patent";
 
 export class PatentRespoistory {
 
-    async create(patent: IPatent) {
+    async create(patent: IPatent): Promise<Number> {
         try {
-            await Database.getConnection().insert([patent], ['publication_number']).into('patents')
+            return await Database.getConnection().insert([patent], ['publication_number']).into('patents')
         } catch (e) {
-            console.log(e)
             throw e
         }
     }
